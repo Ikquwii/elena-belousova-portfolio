@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Elena Belousova — 10 premium portfolio directions</title>
+  <meta name="description" content="Ten premium portfolio directions using Elena Belousova's complete Wix image archive.">
+  <link rel="stylesheet" href="shared.css">
+</head>
+<body class="hub">
+  <a class="skip-link" href="#concepts">К концептам</a>
+  <header class="hub-header">
+    <nav class="hub-nav" aria-label="Presentation"><strong>Elena Belousova</strong><span>Portfolio study · second edition</span></nav>
+    <h1 class="hub-title">Ten considered ways to let the image lead.</h1>
+    <div class="hub-intro">
+      <p>Десять полноценных направлений на одном реальном архиве Wix. В каждом сохранены четыре понятных раздела, полный кадр без случайно обрезанных ног и головы, спокойная исходная палитра и собственная логика просмотра.</p>
+      <span class="hub-count" data-image-count></span>
+    </div>
+  </header>
+  <main id="concepts" class="concept-list" aria-label="Portfolio concepts"></main>
+  <script src="portfolio-data.js"></script>
+  <script>
+    const concepts = [
+      ['Maison', 'Тихий ателье-индекс: фиксированная навигация и высокая салонная стена.', 'concept-1-aperture.html', 2, 'Fixed atelier / vertical wall'],
+      ['Monograph', 'Портфолио как коллекционная книга: главы, паузы и одиночные кадры.', 'concept-2-index.html', 9, 'Book sequence / chapter pacing'],
+      ['Runway Ledger', 'Точный рабочий архив для арт-директора: быстрое сканирование без потери кадра.', 'concept-3-chapters.html', 19, 'Professional index / rapid review'],
+      ['Salon', 'Музейная развеска с разным масштабом рам, но без автоматического кропа.', 'concept-4-contact-sheet.html', 31, 'Exhibition wall / spatial rhythm'],
+      ['Folio', 'Тактильная папка: один главный кадр и управляемая лента полного архива.', 'concept-5-afterimage.html', 47, 'Lead image / tactile ribbon'],
+      ['Sequence', 'Кинематографическая последовательность с горизонтальным ритмом внутри разделов.', 'concept-6-sequence.html', 62, 'Film sequence / chapter tracks'],
+      ['Cabinet', 'Тёмная приватная просмотровая: свет остаётся только у фотографии.', 'concept-7-cabinet.html', 78, 'Dark room / archive drawer'],
+      ['Editions', 'Четыре направления собраны как самостоятельные издания в одном комплекте.', 'concept-8-editions.html', 96, 'Bound editions / paired pages'],
+      ['Four Rooms', 'Четыре отчётливых пространства с разным темпом, объединённые одной палитрой.', 'concept-9-four-rooms.html', 119, 'Spatial chapters / four rooms'],
+      ['Field Notes', 'Рафинированный рабочий блокнот фотографа: поля, пары и точные пометки.', 'concept-10-field-notes.html', 137, 'Working notes / composed pairs'],
+    ];
+    const images = PORTFOLIO_DATA.sections.flatMap((section) => section.images);
+    document.querySelector('[data-image-count]').textContent = `${PORTFOLIO_DATA.totalImages} images`;
+    document.querySelector('#concepts').innerHTML = concepts.map(([title, description, href, imageIndex, model], index) => {
+      const image = images[imageIndex % images.length];
+      return `<a class="concept-card" href="${href}" data-reveal>
+        <div class="concept-card__visual"><span class="concept-card__number">${String(index + 1).padStart(2, '0')} / 10</span><img src="${image.thumb}" alt="${image.alt}" loading="${index < 2 ? 'eager' : 'lazy'}" decoding="async"></div>
+        <div class="concept-card__copy"><h2>${title}</h2><p>${description}</p><div class="concept-card__meta"><span>${model}</span><span>Открыть ↗</span></div></div>
+      </a>`;
+    }).join('');
+  </script>
+  <script src="shared.js"></script>
+</body>
+</html>

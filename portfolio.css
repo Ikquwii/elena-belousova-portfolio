@@ -1,0 +1,285 @@
+.portfolio { min-height: 100vh; }
+.site-head { position: sticky; z-index: var(--z-sticky); top: 0; min-height: 4.2rem; padding: 1rem clamp(1rem, 2.6vw, 2.5rem); display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; gap: 2rem; border-bottom: 1px solid var(--line); background: color-mix(in oklch, var(--paper) 90%, transparent); backdrop-filter: blur(14px); }
+.site-brand { font-weight: 600; }
+.site-contact { justify-self: end; }
+.section-links { display: flex; gap: clamp(.8rem, 2vw, 1.6rem); font-size: .72rem; }
+.section-links a { position: relative; }
+.section-links a::after { content: ''; position: absolute; inset: auto 0 -.3rem; height: 1px; background: currentColor; transform: scaleX(0); transform-origin: right; transition: transform 260ms var(--ease-out); }
+.section-links a:hover::after { transform: scaleX(1); transform-origin: left; }
+.site-footer { min-height: 52svh; padding: clamp(4rem, 9vw, 9rem) clamp(1rem, 4vw, 4rem) 6rem; display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: end; border-top: 1px solid currentColor; }
+.site-footer a { font: 400 clamp(2.5rem, 6vw, 5.5rem) / .95 'Bodoni Moda', serif; letter-spacing: -.035em; text-wrap: balance; }
+.site-footer p:last-child { text-align: right; }
+.photo-plate { margin: 0; min-width: 0; }
+.photo-button { width: 100%; height: 100%; min-height: 0; padding: 0; display: grid; place-items: center; border: 0; background: transparent; cursor: zoom-in; }
+.photo-button img { width: 100%; height: 100%; object-fit: contain; transition: transform 520ms var(--ease-out), filter 300ms ease, opacity 220ms ease; }
+.photo-button:hover img { transform: scale(1.012); filter: contrast(1.025); }
+.photo-plate figcaption { display: flex; justify-content: space-between; gap: 1rem; padding-top: .6rem; font-size: .65rem; color: color-mix(in oklch, currentColor 64%, transparent); }
+
+/* 01 — Maison */
+.concept-maison { background: var(--paper-pure); }
+.concept-maison .head-minimal { position: fixed; inset: 0 0 auto 32vw; background: color-mix(in oklch, var(--paper-pure) 88%, transparent); }
+.maison-layout { display: grid; grid-template-columns: minmax(17rem, 32vw) minmax(0, 1fr); }
+.maison-intro { position: sticky; top: 0; height: 100svh; padding: clamp(1.4rem, 3vw, 3rem); display: flex; flex-direction: column; justify-content: space-between; border-right: 1px solid var(--line); background: var(--ink); color: var(--paper-pure); }
+.maison-mark { margin: 0; font: 400 clamp(3rem, 7vw, 6rem) / 1 'Prata', serif; }
+.maison-intro h1 { max-width: 9ch; margin: 0 0 1.2rem; font: 400 clamp(2.8rem, 5vw, 5.3rem) / .92 'Bodoni Moda', serif; letter-spacing: -.035em; }
+.maison-intro p { max-width: 30ch; color: oklch(.78 0 0); line-height: 1.55; }
+.maison-tally { display: flex; justify-content: space-between; padding-top: .8rem; border-top: 1px solid oklch(1 0 0 / .24); font-size: .7rem; }
+.maison-menu { display: grid; border-top: 1px solid oklch(1 0 0 / .24); }
+.maison-menu a { padding: .7rem 0; border-bottom: 1px solid oklch(1 0 0 / .24); font-size: .78rem; }
+.maison-rooms { min-width: 0; padding-top: 4.2rem; }
+.maison-room { padding: clamp(3rem, 7vw, 7rem) clamp(1rem, 4vw, 4rem); border-bottom: 1px solid var(--line); }
+.maison-room > header { display: flex; align-items: end; justify-content: space-between; gap: 2rem; margin-bottom: clamp(3rem, 7vw, 7rem); }
+.maison-room h2 { margin: 0; font: 400 clamp(3rem, 7vw, 6rem) / .92 'Bodoni Moda', serif; letter-spacing: -.04em; }
+.maison-room header p { margin: 0; font-size: .72rem; }
+.maison-wall { display: grid; grid-template-columns: repeat(12, 1fr); gap: clamp(1.5rem, 4vw, 4.5rem) 1rem; align-items: start; }
+.maison-wall .photo-plate { grid-column: span 5; height: 62svh; }
+.maison-wall .wall-1 { grid-column: 7 / span 6; height: 74svh; }
+.maison-wall .wall-2 { grid-column: 2 / span 4; height: 52svh; }
+.maison-wall .wall-3 { grid-column: 8 / span 4; height: 58svh; }
+.maison-wall .wall-4 { grid-column: 3 / span 8; height: 80svh; }
+
+/* 02 — Monograph */
+.concept-monograph { background: oklch(.965 0 0); font-family: Manrope, sans-serif; }
+.concept-monograph .head-overlay { position: fixed; width: 100%; color: white; background: linear-gradient(to bottom, oklch(0 0 0 / .58), transparent); border: 0; }
+.monograph-cover { min-height: 100svh; position: relative; display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(18rem, .8fr); background: var(--black); color: white; }
+.monograph-cover__image { min-height: 100svh; display: grid; place-items: center; }
+.monograph-cover__image img { width: 100%; height: 100%; object-fit: contain; }
+.monograph-cover__copy { padding: 8rem clamp(1.5rem, 5vw, 5rem) 4rem; display: flex; flex-direction: column; justify-content: flex-end; }
+.monograph-cover__copy h1 { margin: 1rem 0 2rem; font: 400 clamp(3.2rem, 6vw, 6rem) / .9 'Prata', serif; letter-spacing: -.035em; }
+.monograph-cover__copy p, .monograph-cover__copy span { color: oklch(.74 0 0); line-height: 1.55; }
+.monograph-chapter { padding: clamp(4rem, 10vw, 10rem) clamp(1rem, 5vw, 5rem); }
+.chapter-leaf { min-height: 75svh; display: grid; align-content: center; justify-items: center; text-align: center; border-block: 1px solid var(--line); }
+.chapter-leaf h2 { max-width: 11ch; margin: 1.2rem 0; font: 400 clamp(3.5rem, 8vw, 6rem) / .92 'Prata', serif; letter-spacing: -.035em; }
+.chapter-leaf span, .chapter-leaf p { font-size: .74rem; }
+.monograph-stream { padding-top: clamp(4rem, 10vw, 10rem); display: grid; grid-template-columns: repeat(12, 1fr); gap: clamp(3rem, 9vw, 9rem) 2vw; align-items: start; }
+.monograph-stream .photo-plate { grid-column: 2 / span 8; min-height: 76svh; }
+.monograph-stream .measure-1 { grid-column: 7 / span 5; min-height: 66svh; }
+.monograph-stream .measure-2 { grid-column: 1 / span 5; min-height: 64svh; }
+.monograph-stream .measure-3 { grid-column: 3 / span 9; min-height: 82svh; }
+
+/* 03 — Runway Ledger */
+.concept-ledger { background: var(--paper-pure); font-family: 'Bricolage Grotesque', sans-serif; }
+.head-ledger { background: var(--paper-pure); }
+.ledger-shell { display: grid; grid-template-columns: minmax(18rem, 29vw) minmax(0, 1fr); }
+.ledger-index { position: sticky; top: 4.2rem; height: calc(100svh - 4.2rem); padding: clamp(1.2rem, 3vw, 3rem); display: flex; flex-direction: column; border-right: 1px solid var(--line); }
+.ledger-index > p:first-child { margin: 0; font-size: .72rem; }
+.ledger-index h1 { max-width: 9ch; margin: auto 0 1.2rem; font-size: clamp(3rem, 5.5vw, 5.5rem); line-height: .88; letter-spacing: -.045em; }
+.ledger-index > p { max-width: 32ch; line-height: 1.55; }
+.ledger-menu { display: grid; margin-top: 2rem; border-top: 1px solid var(--line); }
+.ledger-menu a { display: flex; justify-content: space-between; padding: .68rem 0; border-bottom: 1px solid var(--line); font-size: .72rem; }
+.ledger-total { display: flex; justify-content: space-between; align-items: end; margin-top: auto; }
+.ledger-total strong { font-size: clamp(2rem, 4vw, 4rem); font-weight: 500; }
+.ledger-total span { max-width: 9rem; font-size: .65rem; text-align: right; }
+.ledger-archive { min-width: 0; }
+.ledger-section { padding: clamp(2rem, 5vw, 5rem) clamp(1rem, 3vw, 3rem); border-bottom: 1px solid var(--line); }
+.ledger-section > header { display: flex; justify-content: space-between; align-items: end; margin-bottom: 2rem; }
+.ledger-section h2 { margin: 0; font-size: clamp(2.5rem, 5vw, 5rem); line-height: .9; letter-spacing: -.04em; }
+.ledger-section header span { font-size: .7rem; }
+.ledger-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 1rem .7rem; }
+.ledger-grid .photo-plate { min-height: 25rem; border-top: 1px solid var(--line); padding-top: .5rem; }
+.ledger-grid .ledger-wide { grid-column: span 2; min-height: 40rem; }
+
+/* 04 — Salon */
+.concept-salon { background: oklch(.955 .006 75); font-family: 'Albert Sans', sans-serif; }
+.head-salon { background: color-mix(in oklch, oklch(.955 .006 75) 90%, transparent); }
+.salon-foyer { min-height: 88svh; padding: clamp(5rem, 12vw, 12rem) clamp(1rem, 5vw, 5rem); display: flex; justify-content: space-between; align-items: end; gap: 4rem; }
+.salon-foyer h1 { max-width: 11ch; margin: 1rem 0 0; font: 400 clamp(3.7rem, 8vw, 6rem) / .94 'Bodoni Moda', serif; letter-spacing: -.035em; }
+.salon-foyer > p { max-width: 33ch; line-height: 1.6; }
+.salon-room { min-height: 100svh; padding: clamp(4rem, 10vw, 10rem) clamp(1rem, 4vw, 4rem); border-top: 1px solid color-mix(in oklch, currentColor 18%, transparent); }
+.salon-room > header { display: grid; grid-template-columns: 1fr auto 1fr; align-items: end; margin-bottom: clamp(5rem, 12vw, 12rem); text-align: center; }
+.salon-room > header span:first-child { text-align: left; }
+.salon-room > header span:last-child { text-align: right; }
+.salon-room h2 { margin: 0; font: 400 clamp(3rem, 7vw, 6rem) / .92 'Prata', serif; }
+.salon-room header span { font-size: .7rem; }
+.room-tone-1 { background: oklch(.89 .018 42); }
+.room-tone-2 { background: oklch(.39 .022 145); color: oklch(.96 .006 145); }
+.room-tone-3 { background: oklch(.91 .008 70); }
+.salon-wall { display: grid; grid-template-columns: repeat(16, 1fr); grid-auto-rows: 8svh; gap: 2rem 1.2rem; align-items: center; }
+.salon-wall .photo-plate { grid-column: span 5; grid-row: span 7; padding: 1.2rem; background: color-mix(in oklch, white 76%, transparent); box-shadow: 0 1rem 2.8rem oklch(0 0 0 / .08); }
+.salon-wall .hang-1 { grid-column: 8 / span 7; grid-row: span 9; }
+.salon-wall .hang-2 { grid-column: 2 / span 4; grid-row: span 6; }
+.salon-wall .hang-3 { grid-column: 11 / span 4; grid-row: span 6; }
+.salon-wall .hang-4 { grid-column: 4 / span 8; grid-row: span 10; }
+.salon-wall .hang-5 { grid-column: 1 / span 6; grid-row: span 8; }
+.salon-wall .hang-6 { grid-column: 10 / span 6; grid-row: span 8; }
+
+/* 05 — Folio */
+.concept-folio { background: oklch(.94 .008 42); font-family: Manrope, sans-serif; }
+.head-folio { background: color-mix(in oklch, oklch(.94 .008 42) 88%, transparent); }
+.folio-opening { min-height: calc(100svh - 4.2rem); padding: clamp(1rem, 3vw, 3rem); display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(18rem, .8fr); gap: clamp(2rem, 6vw, 7rem); align-items: end; }
+.folio-opening__photo { height: 78svh; display: grid; place-items: center; background: var(--ink); }
+.folio-opening__photo img { width: 100%; height: 100%; object-fit: contain; }
+.folio-opening h1 { max-width: 10ch; margin: 1rem 0 2rem; font: 400 clamp(3.5rem, 7vw, 6rem) / .9 'Prata', serif; letter-spacing: -.035em; }
+.folio-section { padding: clamp(5rem, 12vw, 12rem) clamp(1rem, 3vw, 3rem); border-top: 1px solid var(--line); }
+.folio-section > header { display: flex; justify-content: space-between; align-items: end; margin-bottom: 3rem; }
+.folio-section h2 { margin: .5rem 0 0; font: 400 clamp(3rem, 6vw, 6rem) / .92 'Prata', serif; }
+.folio-section header span, .folio-section header p { font-size: .7rem; }
+.folio-stage { height: 78svh; position: relative; display: grid; place-items: center; background: var(--ink); overflow: hidden; }
+.folio-stage button { width: 100%; height: 100%; border: 0; padding: 0; background: none; cursor: zoom-in; }
+.folio-stage img { width: 100%; height: 100%; object-fit: contain; transition: opacity 220ms ease, filter 220ms ease; }
+.folio-stage img.is-changing { opacity: .15; filter: blur(10px); }
+.folio-stage > span { position: absolute; left: 1rem; bottom: 1rem; color: oklch(.78 0 0); font-size: .68rem; }
+.folio-strip { display: flex; gap: .65rem; overflow-x: auto; padding: 1rem 0 1.5rem; scroll-snap-type: x proximity; }
+.folio-thumb { flex: 0 0 8.5rem; height: 12rem; position: relative; padding: .5rem; border: 1px solid transparent; background: transparent; cursor: pointer; scroll-snap-align: start; }
+.folio-thumb.active { border-color: currentColor; }
+.folio-thumb img { width: 100%; height: 100%; object-fit: contain; }
+.folio-thumb span { position: absolute; left: .4rem; bottom: .15rem; font-size: .58rem; }
+
+/* 06 — Sequence */
+.concept-sequence { background: var(--paper-pure); font-family: 'Bricolage Grotesque', sans-serif; }
+.head-sequence { background: color-mix(in oklch, var(--paper-pure) 90%, transparent); }
+.sequence-title { min-height: 76svh; padding: clamp(5rem, 10vw, 10rem) clamp(1rem, 4vw, 4rem); display: flex; justify-content: space-between; align-items: end; gap: 3rem; border-bottom: 1px solid var(--line); }
+.sequence-title h1 { max-width: 11ch; margin: 0 0 1.3rem; font-size: clamp(3.6rem, 8vw, 6rem); line-height: .88; letter-spacing: -.045em; }
+.sequence-title p { max-width: 38ch; line-height: 1.6; }
+.sequence-title > span { font-size: .72rem; }
+.sequence-section { padding: clamp(4rem, 8vw, 8rem) 0; border-bottom: 1px solid var(--line); }
+.sequence-section > header { padding-inline: clamp(1rem, 4vw, 4rem); display: flex; justify-content: space-between; align-items: end; margin-bottom: 2rem; }
+.sequence-section h2 { margin: 0; font-size: clamp(3rem, 7vw, 6rem); line-height: .9; letter-spacing: -.045em; }
+.sequence-section header p { font-size: .7rem; }
+.sequence-track { display: flex; gap: clamp(1rem, 3vw, 3rem); overflow-x: auto; padding: 0 clamp(1rem, 4vw, 4rem) 2rem; scroll-snap-type: x mandatory; overscroll-behavior-inline: contain; }
+.sequence-track .photo-plate { flex: 0 0 min(70vw, 58rem); height: 72svh; scroll-snap-align: center; }
+.sequence-track .sequence-1 { flex-basis: min(45vw, 35rem); }
+.sequence-track .sequence-2 { flex-basis: min(58vw, 46rem); }
+.sequence-track .sequence-3 { flex-basis: min(38vw, 30rem); }
+
+/* 07 — Cabinet */
+.concept-cabinet { --line: oklch(1 0 0 / .18); background: var(--black); color: oklch(.94 0 0); font-family: Manrope, sans-serif; }
+.head-cabinet { background: oklch(.075 .005 45 / .88); }
+.cabinet-opening { min-height: calc(100svh - 4.2rem); padding: clamp(1rem, 3vw, 3rem); display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(18rem, .75fr); gap: clamp(2rem, 5vw, 6rem); align-items: end; }
+.cabinet-opening__image { height: 79svh; display: grid; place-items: center; background: oklch(.1 0 0); }
+.cabinet-opening__image img { width: 100%; height: 100%; object-fit: contain; }
+.cabinet-opening h1 { max-width: 8ch; margin: 0 0 1.5rem; font: 400 clamp(3.5rem, 7vw, 6rem) / .92 'Prata', serif; letter-spacing: -.03em; }
+.cabinet-opening p { color: oklch(.7 0 0); line-height: 1.6; }
+.cabinet-menu { display: grid; margin-top: 2.5rem; border-top: 1px solid var(--line); }
+.cabinet-menu a { padding: .65rem 0; border-bottom: 1px solid var(--line); font-size: .72rem; }
+.cabinet-section { padding: clamp(5rem, 11vw, 11rem) clamp(1rem, 4vw, 4rem); border-top: 1px solid var(--line); }
+.cabinet-section > header { display: flex; justify-content: space-between; align-items: end; margin-bottom: 3rem; }
+.cabinet-section h2 { margin: 0; font: 400 clamp(3rem, 7vw, 6rem) / .92 'Prata', serif; }
+.cabinet-display { height: 80svh; position: relative; display: grid; place-items: center; background: oklch(.105 0 0); box-shadow: inset 0 0 7rem oklch(0 0 0 / .55); }
+.cabinet-display button { width: 100%; height: 100%; border: 0; padding: 0; background: none; cursor: zoom-in; }
+.cabinet-display img { width: 100%; height: 100%; object-fit: contain; }
+.cabinet-display p { position: absolute; left: 1rem; bottom: 1rem; font-size: .68rem; color: oklch(.65 0 0); }
+.cabinet-drawer { display: grid; grid-template-columns: repeat(8, 1fr); gap: .65rem; padding-top: 1.2rem; }
+.cabinet-thumb { position: relative; height: 11rem; padding: .4rem; border: 1px solid transparent; background: oklch(.11 0 0); color: inherit; cursor: pointer; }
+.cabinet-thumb.active { border-color: oklch(.78 0 0); }
+.cabinet-thumb img { width: 100%; height: 100%; object-fit: contain; }
+.cabinet-thumb span { position: absolute; left: .35rem; bottom: .1rem; font-size: .55rem; color: oklch(.65 0 0); }
+.concept-cabinet .site-footer { background: oklch(.11 0 0); }
+
+/* 08 — Editions */
+.concept-editions { background: oklch(.965 0 0); font-family: 'Albert Sans', sans-serif; }
+.head-editions { background: color-mix(in oklch, oklch(.965 0 0) 90%, transparent); }
+.editions-cover { min-height: calc(100svh - 4.2rem); padding: clamp(4rem, 9vw, 9rem) clamp(1rem, 5vw, 5rem); display: grid; grid-template-columns: 1fr 1fr; align-content: center; gap: 2rem 6rem; background: var(--brown); color: oklch(.96 .006 40); }
+.editions-cover > p { grid-column: 1 / -1; }
+.editions-cover h1 { max-width: 10ch; margin: 0; font: 400 clamp(3.7rem, 8vw, 6rem) / .9 'Bodoni Moda', serif; letter-spacing: -.035em; }
+.editions-cover > span { align-self: end; max-width: 31ch; line-height: 1.6; color: oklch(.8 .025 40); }
+.editions-cover > div { grid-column: 1 / -1; display: grid; grid-template-columns: repeat(4, 1fr); margin-top: 3rem; border-top: 1px solid oklch(1 0 0 / .28); }
+.editions-cover a { display: flex; gap: 1rem; padding: 1rem 0; border-bottom: 1px solid oklch(1 0 0 / .28); font-size: .75rem; }
+.editions-cover b { font-weight: 400; color: var(--peach); }
+.edition { padding: clamp(5rem, 11vw, 11rem) clamp(1rem, 5vw, 5rem); }
+.edition:nth-child(even) { background: oklch(.92 .006 40); }
+.edition > header { min-height: 48svh; display: grid; grid-template-columns: 1fr 2fr 1fr; align-items: center; border-block: 1px solid var(--line); }
+.edition h2 { margin: 0; font: 400 clamp(3rem, 7vw, 6rem) / .92 'Bodoni Moda', serif; text-align: center; }
+.edition header span { text-align: right; }
+.edition-pages { padding-top: clamp(4rem, 9vw, 9rem); display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: clamp(3rem, 7vw, 7rem) clamp(1rem, 4vw, 4rem); }
+.edition-pages .photo-plate { height: 74svh; }
+.edition-pages .edition-plate { grid-column: 1 / -1; height: 86svh; }
+
+/* 09 — Four Rooms */
+.concept-rooms { background: var(--paper-pure); font-family: 'Bricolage Grotesque', sans-serif; }
+.head-rooms { background: color-mix(in oklch, var(--paper-pure) 88%, transparent); }
+.rooms-threshold { min-height: 82svh; padding: clamp(5rem, 11vw, 11rem) clamp(1rem, 4vw, 4rem); display: flex; justify-content: space-between; align-items: end; gap: 4rem; }
+.rooms-threshold h1 { max-width: 10ch; margin: 0 0 1.4rem; font-size: clamp(3.7rem, 8vw, 6rem); line-height: .88; letter-spacing: -.045em; }
+.rooms-threshold p { max-width: 38ch; line-height: 1.6; }
+.rooms-menu { min-width: min(26rem, 35vw); display: grid; border-top: 1px solid var(--line); }
+.rooms-menu a { padding: .75rem 0; border-bottom: 1px solid var(--line); font-size: .75rem; }
+.four-room { padding-bottom: clamp(6rem, 14vw, 14rem); }
+.four-room-0 { background: oklch(.955 .005 70); }
+.four-room-1 { background: oklch(.89 .025 40); }
+.four-room-2 { background: oklch(.36 .028 145); color: oklch(.95 .006 145); }
+.four-room-3 { background: oklch(.9 .008 70); }
+.four-room__lead { min-height: 100svh; padding: clamp(1rem, 4vw, 4rem); display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(18rem, .8fr); gap: clamp(2rem, 6vw, 7rem); align-items: end; }
+.four-room__image { height: 82svh; display: grid; place-items: center; background: color-mix(in oklch, currentColor 8%, transparent); }
+.four-room__image img { width: 100%; height: 100%; object-fit: contain; }
+.four-room__lead h2 { margin: .7rem 0 1.3rem; font-size: clamp(3.5rem, 8vw, 6rem); line-height: .88; letter-spacing: -.045em; }
+.four-room__lead header span, .four-room__lead header p { font-size: .74rem; }
+.four-room__collection { padding: clamp(3rem, 8vw, 8rem) clamp(1rem, 4vw, 4rem); display: grid; grid-template-columns: repeat(12, 1fr); gap: clamp(2rem, 6vw, 6rem) 1.5rem; }
+.four-room__collection .photo-plate { grid-column: span 5; height: 62svh; }
+.four-room__collection .room-frame-1 { grid-column: 7 / span 6; height: 76svh; }
+.four-room__collection .room-frame-2 { grid-column: 2 / span 4; height: 54svh; }
+.four-room__collection .room-frame-3 { grid-column: 8 / span 4; height: 57svh; }
+.four-room__collection .room-frame-4 { grid-column: 3 / span 8; height: 84svh; }
+
+/* 10 — Field Notes */
+.concept-notes { background: oklch(.965 .004 75); font-family: Manrope, sans-serif; }
+.head-notes { position: fixed; inset: 0 0 auto 30vw; background: color-mix(in oklch, oklch(.965 .004 75) 90%, transparent); }
+.notes-shell { display: grid; grid-template-columns: minmax(18rem, 30vw) minmax(0, 1fr); }
+.notes-margin { position: sticky; top: 0; height: 100svh; padding: clamp(1.5rem, 3vw, 3rem); display: flex; flex-direction: column; background: var(--sage); color: oklch(.97 .005 145); }
+.notes-margin > p:first-child { margin: 0; font-size: .72rem; line-height: 1.5; }
+.notes-margin h1 { max-width: 9ch; margin: auto 0 1.3rem; font: 400 clamp(3rem, 5.5vw, 5.5rem) / .9 'Prata', serif; letter-spacing: -.035em; }
+.notes-margin > p { max-width: 31ch; color: oklch(.83 .012 145); line-height: 1.6; }
+.notes-menu { display: grid; margin-top: 2rem; border-top: 1px solid oklch(1 0 0 / .24); }
+.notes-menu a { padding: .65rem 0; border-bottom: 1px solid oklch(1 0 0 / .24); font-size: .7rem; }
+.notes-margin > span { margin-top: auto; font-size: .65rem; }
+.notes-content { min-width: 0; padding-top: 4.2rem; }
+.notes-section { padding: clamp(4rem, 9vw, 9rem) clamp(1rem, 4vw, 4rem); border-bottom: 1px solid var(--line); }
+.notes-section > header { display: grid; grid-template-columns: auto 1fr auto; gap: 2rem; align-items: end; margin-bottom: clamp(4rem, 9vw, 9rem); }
+.notes-section h2 { margin: 0; font: 400 clamp(3rem, 7vw, 6rem) / .92 'Prata', serif; }
+.notes-section header span, .notes-section header p { font-size: .7rem; }
+.notes-grid { display: grid; grid-template-columns: repeat(12, 1fr); gap: clamp(3rem, 8vw, 8rem) 2rem; align-items: start; }
+.note-entry { grid-column: span 6; }
+.note-entry.note-1 { grid-column: 8 / span 5; padding-top: 14svh; }
+.note-entry.note-2 { grid-column: 2 / span 4; }
+.note-entry.note-3 { grid-column: 7 / span 6; }
+.note-entry.note-4 { grid-column: 1 / span 8; }
+.note-entry.note-5 { grid-column: 8 / span 4; padding-top: 10svh; }
+.note-entry .photo-plate { height: 68svh; }
+.note-entry > p { margin: .7rem 0 0; padding-top: .6rem; border-top: 1px solid var(--line); font-size: .62rem; }
+
+@media (max-width: 980px) {
+  .site-head { grid-template-columns: 1fr auto; }
+  .site-head .section-links { display: none; }
+  .ledger-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .cabinet-drawer { grid-template-columns: repeat(6, 1fr); }
+}
+
+@media (max-width: 760px) {
+  .site-head { min-height: 3.7rem; padding: .9rem 1rem; }
+  .site-footer { grid-template-columns: 1fr; min-height: 68svh; padding-bottom: 6rem; }
+  .site-footer p:last-child { text-align: left; }
+  .concept-maison .head-minimal, .head-notes { position: sticky; inset: auto; }
+  .maison-layout, .ledger-shell, .notes-shell { display: block; }
+  .maison-intro, .ledger-index, .notes-margin { position: relative; top: auto; height: auto; min-height: 82svh; }
+  .maison-rooms, .notes-content { padding-top: 0; }
+  .maison-wall, .monograph-stream, .four-room__collection, .notes-grid { grid-template-columns: 1fr; gap: 3.5rem; }
+  .maison-wall .photo-plate, .maison-wall .wall-1, .maison-wall .wall-2, .maison-wall .wall-3, .maison-wall .wall-4,
+  .monograph-stream .photo-plate, .monograph-stream .measure-1, .monograph-stream .measure-2, .monograph-stream .measure-3,
+  .four-room__collection .photo-plate, .four-room__collection .room-frame-1, .four-room__collection .room-frame-2, .four-room__collection .room-frame-3, .four-room__collection .room-frame-4,
+  .note-entry, .note-entry.note-1, .note-entry.note-2, .note-entry.note-3, .note-entry.note-4, .note-entry.note-5 { grid-column: 1; height: 66svh; padding-top: 0; }
+  .monograph-cover, .folio-opening, .cabinet-opening, .four-room__lead { grid-template-columns: 1fr; }
+  .monograph-cover__image, .folio-opening__photo, .cabinet-opening__image, .four-room__image { height: 62svh; min-height: 0; }
+  .monograph-cover__copy { padding: 2rem 1rem 5rem; }
+  .salon-foyer, .sequence-title, .rooms-threshold { min-height: 78svh; flex-direction: column; align-items: flex-start; justify-content: flex-end; }
+  .salon-room > header { grid-template-columns: 1fr; gap: 1rem; text-align: left; }
+  .salon-room > header span:last-child { text-align: left; }
+  .salon-wall { grid-template-columns: 1fr; grid-auto-rows: auto; gap: 3rem; }
+  .salon-wall .photo-plate, .salon-wall .hang-1, .salon-wall .hang-2, .salon-wall .hang-3, .salon-wall .hang-4, .salon-wall .hang-5, .salon-wall .hang-6 { grid-column: 1; grid-row: auto; height: 66svh; }
+  .ledger-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .ledger-grid .photo-plate, .ledger-grid .ledger-wide { grid-column: span 1; min-height: 21rem; }
+  .folio-section > header, .sequence-section > header, .cabinet-section > header { align-items: flex-start; flex-direction: column; gap: 1rem; }
+  .folio-stage, .cabinet-display { height: 66svh; }
+  .sequence-track .photo-plate, .sequence-track .sequence-1, .sequence-track .sequence-2, .sequence-track .sequence-3 { flex-basis: 84vw; height: 64svh; }
+  .cabinet-drawer { grid-template-columns: repeat(3, 1fr); }
+  .cabinet-thumb { height: 9rem; }
+  .editions-cover { grid-template-columns: 1fr; }
+  .editions-cover > p, .editions-cover > div { grid-column: 1; }
+  .editions-cover > div { grid-template-columns: 1fr; }
+  .edition > header { min-height: 55svh; grid-template-columns: 1fr; align-content: center; gap: 1rem; }
+  .edition h2 { text-align: left; }
+  .edition header span { text-align: left; }
+  .edition-pages { grid-template-columns: 1fr; }
+  .edition-pages .photo-plate, .edition-pages .edition-plate { grid-column: 1; height: 67svh; }
+  .rooms-menu { width: 100%; min-width: 0; }
+  .notes-section > header { grid-template-columns: 1fr; gap: 1rem; }
+  .note-entry .photo-plate { height: 62svh; }
+}
