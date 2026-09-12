@@ -46,25 +46,11 @@ button { color: inherit; }
 .image-dialog img { width: 100%; height: 100%; object-fit: contain; }
 
 .hub { background: var(--black); color: oklch(.95 .005 65); min-height: 100vh; }
-.hub-header { min-height: 76svh; padding: clamp(1.2rem, 3vw, 2.5rem); display: grid; grid-template-rows: auto 1fr auto; border-bottom: 1px solid oklch(1 0 0 / .16); }
-.hub-nav { display: flex; justify-content: space-between; align-items: center; font-size: .76rem; color: oklch(.72 .006 65); }
-.hub-nav strong { color: inherit; font-weight: 500; }
-.hub-title { align-self: center; max-width: 13ch; margin: 5rem 0 3rem; font: 400 clamp(3.6rem, 9vw, 6rem) / .92 'Prata', serif; letter-spacing: -.035em; text-wrap: balance; }
-.hub-intro { display: flex; justify-content: space-between; align-items: end; gap: 2rem; }
-.hub-intro p { max-width: 60ch; margin: 0; color: oklch(.72 .006 65); line-height: 1.65; }
-.hub-count { color: var(--peach); font: 400 clamp(2.2rem, 4vw, 4rem) / 1 'Bodoni Moda', serif; white-space: nowrap; }
-.concept-list { padding: clamp(3rem, 7vw, 7rem) clamp(1rem, 3vw, 2.5rem) 8rem; }
-.concept-card { display: grid; grid-template-columns: minmax(0, 1fr) minmax(18rem, 34vw); min-height: 74svh; border-top: 1px solid oklch(1 0 0 / .18); padding: clamp(2rem, 5vw, 4.5rem) 0; gap: clamp(2rem, 6vw, 7rem); }
-.concept-card:nth-child(even) { grid-template-columns: minmax(18rem, 34vw) minmax(0, 1fr); }
-.concept-card:nth-child(even) .concept-card__visual { order: 2; }
-.concept-card__visual { position: relative; min-height: 60svh; display: grid; place-items: center; overflow: hidden; background: oklch(.12 .005 65); }
-.concept-card__visual img { width: 100%; height: 100%; object-fit: contain; transition: transform 700ms var(--ease-out), filter 500ms ease; }
-.concept-card:hover .concept-card__visual img { transform: scale(1.018); filter: contrast(1.03); }
-.concept-card__number { position: absolute; top: 1rem; left: 1rem; font-size: .72rem; color: oklch(.8 .005 65); }
-.concept-card__copy { align-self: end; padding-bottom: 1rem; }
-.concept-card__copy h2 { margin: 0 0 1rem; font: 400 clamp(3rem, 6vw, 5.5rem) / .92 'Bodoni Moda', serif; letter-spacing: -.035em; }
-.concept-card__copy p { max-width: 38ch; color: oklch(.7 .005 65); line-height: 1.6; }
-.concept-card__meta { margin-top: 2.5rem; display: flex; justify-content: space-between; gap: 1rem; padding-top: .9rem; border-top: 1px solid oklch(1 0 0 / .16); font-size: .74rem; color: oklch(.78 .005 65); }
+.concept-list { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1px; padding: 1px; background: oklch(1 0 0 / .12); }
+.concept-card { position: relative; min-height: 76svh; display: grid; place-items: center; overflow: hidden; background: var(--black); }
+.concept-card img { width: 100%; height: 100%; object-fit: contain; transition: transform 700ms var(--ease-out), filter 500ms ease; }
+.concept-card:hover img { transform: scale(1.018); filter: contrast(1.03); }
+.concept-card__number { position: absolute; z-index: 1; top: clamp(1rem, 2vw, 1.5rem); left: clamp(1rem, 2vw, 1.5rem); width: 2.5rem; height: 2.5rem; display: grid; place-items: center; border-radius: 50%; background: oklch(.98 0 0 / .9); color: var(--black); font-size: .72rem; font-variant-numeric: tabular-nums; backdrop-filter: blur(10px); }
 
 [data-reveal] { opacity: 1; transform: none; }
 .js [data-reveal] { opacity: .001; transform: translateY(1.8rem); transition: opacity 620ms var(--ease-out), transform 760ms var(--ease-out); }
@@ -73,11 +59,8 @@ button { color: inherit; }
 @media (max-width: 760px) {
   .concept-dock { overflow-x: auto; justify-content: flex-start; left: .5rem; right: .5rem; transform: none; }
   .concept-dock a { flex: 0 0 auto; }
-  .hub-header { min-height: 82svh; }
-  .hub-intro { align-items: flex-start; flex-direction: column; }
-  .concept-card, .concept-card:nth-child(even) { grid-template-columns: 1fr; min-height: 0; gap: 1.5rem; }
-  .concept-card:nth-child(even) .concept-card__visual { order: 0; }
-  .concept-card__visual { min-height: 64svh; }
+  .concept-list { grid-template-columns: 1fr; }
+  .concept-card { min-height: 72svh; }
 }
 
 @media (prefers-reduced-motion: reduce) {

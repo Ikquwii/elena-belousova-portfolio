@@ -47,7 +47,11 @@ for (const [file, concept] of entries) {
 }
 
 const hub = await readFile(resolve(project, 'index.html'), 'utf8');
-assert.equal((hub.match(/\['[^']+', '[^']+', 'concept-/g) || []).length, 10, 'hub must describe ten concepts');
+assert.equal((hub.match(/'concept-\d+-[^']+\.html'/g) || []).length, 10, 'hub must link to ten mockups');
+assert.doesNotMatch(hub, /hub-header/, 'hub must not show an introductory text block');
+assert.doesNotMatch(hub, /concept-card__copy/, 'mockup cards must not show titles or descriptions');
+assert.doesNotMatch(hub, /Portfolio study|Десять полноценных|Открыть ↗/, 'hub must not show presentation copy');
+assert.match(hub, /concept-card__number/, 'each mockup must keep its visible number');
 
 if (process.env.BASE_URL) {
   const urls = ['index.html', ...entries.map(([file]) => file)];
