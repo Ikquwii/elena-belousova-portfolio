@@ -44,6 +44,7 @@ for (const [file, concept] of entries) {
   assert.ok(html.includes('portfolio-data.js'));
   assert.ok(html.includes('portfolio-app.js'));
   assert.ok(html.includes('viewport'));
+  assert.ok(html.includes('ikquwii-watermark.css'), `${file} must include the presentation watermark`);
 }
 
 const hub = await readFile(resolve(project, 'index.html'), 'utf8');
@@ -52,6 +53,10 @@ assert.doesNotMatch(hub, /hub-header/, 'hub must not show an introductory text b
 assert.doesNotMatch(hub, /concept-card__copy/, 'mockup cards must not show titles or descriptions');
 assert.doesNotMatch(hub, /Portfolio study|Десять полноценных|Открыть ↗/, 'hub must not show presentation copy');
 assert.match(hub, /concept-card__number/, 'each mockup must keep its visible number');
+assert.match(hub, /ikquwii-watermark\.css/, 'hub must include the presentation watermark');
+
+const watermark = await readFile(resolve(project, 'ikquwii-watermark.css'), 'utf8');
+assert.match(watermark, /ikquwii/i, 'watermark stylesheet must render the ikquwii mark');
 
 if (process.env.BASE_URL) {
   const urls = ['index.html', ...entries.map(([file]) => file)];
