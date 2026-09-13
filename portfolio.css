@@ -236,6 +236,70 @@
 .note-entry .photo-plate { height: 68svh; }
 .note-entry > p { margin: .7rem 0 0; padding-top: .6rem; border-top: 1px solid var(--line); font-size: .62rem; }
 
+/* 11 - Navigator */
+.concept-navigator {
+  --navigator-bg: oklch(.105 .006 35);
+  --navigator-surface: oklch(.145 .008 35);
+  --navigator-ink: oklch(.94 .008 70);
+  --navigator-muted: oklch(.7 .012 60);
+  --navigator-line: oklch(.94 .008 70 / .18);
+  --navigator-accent: oklch(.73 .045 32);
+  background: var(--navigator-bg);
+  color: var(--navigator-ink);
+  font-family: 'Albert Sans', sans-serif;
+}
+.concept-navigator .head-navigator { position: absolute; width: 100%; color: var(--navigator-ink); background: linear-gradient(to bottom, oklch(.08 .008 35 / .78), transparent); border-color: var(--navigator-line); backdrop-filter: none; }
+.navigator-hero { position: relative; min-height: 100dvh; display: grid; align-items: end; overflow: hidden; background: var(--navigator-bg); }
+.navigator-hero__image { position: absolute; inset: 0; }
+.navigator-hero__image::after { content: ''; position: absolute; inset: 0; background: linear-gradient(to top, oklch(.06 .008 35 / .82) 0, transparent 58%), linear-gradient(to right, oklch(.06 .008 35 / .28), transparent 48%); }
+.navigator-hero__image img { width: 100%; height: 100%; object-fit: cover; object-position: center 30%; filter: saturate(.82) contrast(1.04); }
+.navigator-hero__copy { position: relative; z-index: 1; padding: 7rem clamp(1rem, 4vw, 4rem) 12.5rem; }
+.navigator-hero__copy p { margin: 0 0 .8rem; color: var(--navigator-muted); font-size: clamp(.78rem, 1.1vw, 1rem); }
+.navigator-hero__copy h1 { max-width: 11ch; margin: 0; font: 400 clamp(3.7rem, 9vw, 7.6rem) / .88 'Bodoni Moda', serif; letter-spacing: -.045em; text-wrap: balance; }
+.navigator-marquee { position: absolute; z-index: 2; inset: auto 0 4.2rem; overflow: hidden; border-block: 1px solid var(--navigator-line); background: oklch(.08 .008 35 / .82); backdrop-filter: blur(12px); }
+.navigator-marquee-track { width: max-content; display: flex; }
+.navigator-marquee-group { display: flex; align-items: center; }
+.navigator-marquee a, .navigator-marquee span { display: block; padding: 1.25rem clamp(1.8rem, 4vw, 4rem); color: var(--navigator-ink); font: 400 clamp(1.15rem, 2.2vw, 2rem) / 1 'Bodoni Moda', serif; white-space: nowrap; }
+.navigator-marquee a { transition: color 180ms ease, background 180ms ease; }
+.navigator-marquee a:hover, .navigator-marquee a:focus-visible { color: var(--navigator-bg); background: var(--navigator-ink); }
+
+.navigator-overview { padding: clamp(5rem, 10vw, 10rem) clamp(1rem, 4vw, 4rem); }
+.navigator-overview > header { max-width: 52rem; margin-bottom: clamp(3rem, 7vw, 6rem); }
+.navigator-overview h2 { max-width: 12ch; margin: 0 0 1.25rem; font: 400 clamp(3.2rem, 7vw, 6rem) / .92 'Bodoni Moda', serif; letter-spacing: -.04em; }
+.navigator-overview header p { max-width: 36rem; margin: 0; color: var(--navigator-muted); line-height: 1.6; }
+.navigator-overview-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: clamp(1.5rem, 3vw, 3rem); }
+.navigator-overview-card { min-height: 34rem; position: relative; overflow: hidden; background: var(--navigator-surface); }
+.navigator-overview-card__image { position: absolute; inset: 0; display: grid; place-items: center; }
+.navigator-overview-card__image::after { content: ''; position: absolute; inset: 0; background: linear-gradient(to top, oklch(.06 .008 35 / .9), transparent 65%); }
+.navigator-overview-card__image img { width: 100%; height: 100%; object-fit: contain; transition: transform 600ms var(--ease-out), opacity 400ms ease; }
+.navigator-overview-card:hover .navigator-overview-card__image img { transform: scale(1.018); opacity: .86; }
+.navigator-overview-card__copy { position: absolute; z-index: 1; inset: auto 0 0; padding: clamp(1.2rem, 2.5vw, 2.2rem); display: grid; grid-template-columns: 1fr auto; gap: .5rem 1rem; align-items: end; }
+.navigator-overview-card__copy strong { font: 400 clamp(2rem, 4vw, 3.7rem) / .95 'Bodoni Moda', serif; }
+.navigator-overview-card__copy small { grid-column: 1; color: var(--navigator-muted); }
+.navigator-overview-card__copy b { grid-column: 2; grid-row: 1 / span 2; color: var(--navigator-muted); font-size: .68rem; font-weight: 400; white-space: nowrap; }
+
+.navigator-section { padding: clamp(5rem, 11vw, 11rem) clamp(1rem, 4vw, 4rem); border-top: 1px solid var(--navigator-line); }
+.navigator-section__head { display: flex; justify-content: space-between; gap: 2rem; align-items: end; margin-bottom: clamp(3rem, 7vw, 6rem); }
+.navigator-section__head h2 { margin: 0 0 .7rem; font: 400 clamp(3rem, 7vw, 6.5rem) / .9 'Bodoni Moda', serif; letter-spacing: -.04em; }
+.navigator-section__head p, .navigator-section__head > a { margin: 0; color: var(--navigator-muted); font-size: .74rem; }
+.navigator-feature { display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(18rem, .85fr); gap: clamp(1.5rem, 4vw, 4rem); align-items: start; }
+.navigator-lead { height: 80dvh; margin: 0; position: sticky; top: 5rem; display: grid; place-items: center; background: var(--navigator-surface); }
+.navigator-lead button { width: 100%; height: 100%; padding: 0; border: 0; background: transparent; cursor: zoom-in; }
+.navigator-lead img { width: 100%; height: 100%; object-fit: contain; }
+.navigator-gallery { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: clamp(1.2rem, 3vw, 3rem) 1rem; }
+.navigator-gallery .navigator-frame { min-height: 25rem; background: var(--navigator-surface); }
+.navigator-gallery .navigator-frame:nth-child(3n) { grid-column: 1 / -1; min-height: 42rem; }
+.navigator-extra { display: contents; }
+.navigator-expand { width: 100%; margin-top: clamp(2rem, 5vw, 5rem); padding: 1.2rem; border: 1px solid var(--navigator-line); background: transparent; color: var(--navigator-ink); cursor: pointer; transition: color 180ms ease, background 180ms ease; }
+.navigator-expand:hover, .navigator-expand:focus-visible { background: var(--navigator-ink); color: var(--navigator-bg); }
+.navigator-footer { border-color: var(--navigator-line); }
+
+@media (prefers-reduced-motion: no-preference) {
+  .navigator-marquee-track { animation: navigator-marquee 34s linear infinite; }
+  .navigator-marquee:hover .navigator-marquee-track, .navigator-marquee:focus-within .navigator-marquee-track { animation-play-state: paused; }
+}
+@keyframes navigator-marquee { to { transform: translateX(-50%); } }
+
 @media (max-width: 980px) {
   .site-head { grid-template-columns: 1fr auto; }
   .site-head .section-links { display: none; }
@@ -282,4 +346,18 @@
   .rooms-menu { width: 100%; min-width: 0; }
   .notes-section > header { grid-template-columns: 1fr; gap: 1rem; }
   .note-entry .photo-plate { height: 62svh; }
+  .concept-navigator .head-navigator { grid-template-columns: 1fr auto; }
+  .navigator-hero__image img { object-position: 54% center; }
+  .navigator-hero__copy { padding: 6rem 1rem 11rem; }
+  .navigator-hero__copy h1 { font-size: clamp(3.4rem, 17vw, 5.5rem); }
+  .navigator-marquee a, .navigator-marquee span { padding: 1rem 1.6rem; font-size: 1.25rem; }
+  .navigator-overview-grid { grid-template-columns: 1fr; }
+  .navigator-overview-card { min-height: 68dvh; }
+  .navigator-overview-card__copy { grid-template-columns: 1fr; }
+  .navigator-overview-card__copy b { grid-column: 1; grid-row: auto; }
+  .navigator-section__head { align-items: flex-start; flex-direction: column; }
+  .navigator-feature { grid-template-columns: 1fr; }
+  .navigator-lead { position: relative; top: auto; height: 68dvh; }
+  .navigator-gallery { grid-template-columns: 1fr; gap: 2.5rem; }
+  .navigator-gallery .navigator-frame, .navigator-gallery .navigator-frame:nth-child(3n) { grid-column: 1; min-height: 60dvh; }
 }

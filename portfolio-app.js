@@ -16,12 +16,13 @@
     ['editions', 'Editions', 'concept-8-editions.html'],
     ['rooms', 'Four Rooms', 'concept-9-four-rooms.html'],
     ['notes', 'Field Notes', 'concept-10-field-notes.html'],
+    ['navigator', 'Navigator', 'concept-11-navigator.html'],
   ];
 
   const allImages = data.sections.flatMap((section) => section.images.map((image) => ({ ...image, section: section.title })));
   document.body.dataset.imageCount = String(allImages.length);
 
-  const escape = (value) => String(value).replace(/[&<>'"]/g, (character) => ({
+  const escape = (value) => String(value).replace(/[—–]/g, ' - ').replace(/[&<>'"]/g, (character) => ({
     '&': '&amp;', '<': '&lt;', '>': '&gt;', "'": '&#39;', '"': '&quot;',
   })[character]);
 
@@ -67,6 +68,7 @@
     editions: ['Four bodies of work, bound together.', 'A portfolio organised as a set of considered editions.'],
     rooms: ['Enter through four distinct rooms.', 'Each practice keeps its own rhythm and atmosphere.'],
     notes: ['Selected with a photographer’s eye.', 'A working notebook refined into a public archive.'],
+    navigator: ['Elena Belousova', 'Fashion photographer'],
   };
 
   const renderMaison = () => `
@@ -223,7 +225,84 @@
       </div>
     </main>${footer()}`;
 
-  const renderers = { maison: renderMaison, monograph: renderMonograph, ledger: renderLedger, salon: renderSalon, folio: renderFolio, sequence: renderSequence, cabinet: renderCabinet, editions: renderEditions, rooms: renderRooms, notes: renderNotes };
+  const renderNavigator = () => {
+    const marqueeGroup = (clone = false) => `
+      <div class="navigator-marquee-group"${clone ? ' aria-hidden="true"' : ''}>
+        ${data.sections.map((section) => clone
+          ? `<span>${escape(section.title)}</span>`
+          : `<a href="#${escape(section.slug)}">${escape(section.title)}</a>`).join('')}
+      </div>`;
+
+    return `
+      <header class="site-head head-navigator">
+        <a class="site-brand" href="#main">Elena Belousova</a>
+        ${sectionLinks()}
+        <a class="site-contact" href="https://www.instagram.com/whiteusova/" target="_blank" rel="noreferrer">Enquire ↗</a>
+      </header>
+      <main id="main">
+        <section class="navigator-hero" aria-labelledby="navigator-title">
+          <div class="navigator-hero__image">${imageTag(allImages[78], { eager: true })}</div>
+          <div class="navigator-hero__copy">
+            <p>${heroCopy.navigator[1]}</p>
+            <h1 id="navigator-title">${heroCopy.navigator[0]}</h1>
+          </div>
+          <nav id="navigator-index" class="navigator-marquee" aria-label="Portfolio sections">
+            <div class="navigator-marquee-track">${marqueeGroup()}${marqueeGroup(true)}</div>
+          </nav>
+        </section>
+
+        <section class="navigator-overview" aria-labelledby="work-index-title">
+          <header>
+            <h2 id="work-index-title">Find the relevant work.</h2>
+            <p>Choose a field first. Open the complete archive only when you need it.</p>
+          </header>
+          <div class="navigator-overview-grid">
+            ${data.sections.map((section) => `
+              <a class="navigator-overview-card" href="#${escape(section.slug)}">
+                <span class="navigator-overview-card__image">${imageTag(section.images[0], { thumb: true })}</span>
+                <span class="navigator-overview-card__copy">
+                  <strong>${escape(section.title)}</strong>
+                  <small>${escape(section.note.replaceAll('·', '/'))}</small>
+                  <b>${section.images.length} photographs</b>
+                </span>
+              </a>`).join('')}
+          </div>
+        </section>
+
+        ${data.sections.map((section) => {
+          const selected = section.images.slice(1, 6);
+          const additional = section.images.slice(6);
+          return `
+            <section id="${escape(section.slug)}" class="navigator-section">
+              <header class="navigator-section__head">
+                <div><h2>${escape(section.title)}</h2><p>${escape(section.note.replaceAll('·', '/'))}</p></div>
+                <a href="#navigator-index">All sections ↑</a>
+              </header>
+              <div class="navigator-feature">
+                <figure class="navigator-lead">
+                  <button type="button" data-lightbox="${escape(section.images[0].id)}" aria-label="Open ${escape(section.images[0].alt)}">
+                    ${imageTag(section.images[0], { eager: section.slug === 'fashion-week' })}
+                  </button>
+                </figure>
+                <div class="navigator-gallery">
+                  ${selected.map((image, index) => plate({ ...image, section: section.title }, index, 'navigator-frame', false)).join('')}
+                  ${additional.length ? `<div id="more-${escape(section.slug)}" class="navigator-extra" hidden>
+                    ${additional.map((image, index) => plate({ ...image, section: section.title }, index + selected.length, 'navigator-frame', false)).join('')}
+                  </div>` : ''}
+                </div>
+              </div>
+              ${additional.length ? `<button class="navigator-expand" type="button" data-expand-section="more-${escape(section.slug)}" data-count="${section.images.length}" aria-expanded="false">View all ${section.images.length} photographs</button>` : ''}
+            </section>`;
+        }).join('')}
+      </main>
+      <footer class="site-footer navigator-footer">
+        <p>Fashion photography</p>
+        <a href="https://www.instagram.com/whiteusova/" target="_blank" rel="noreferrer">Available for commissions ↗</a>
+        <p>Barcelona / Paris / Milan / © 2026</p>
+      </footer>`;
+  };
+
+  const renderers = { maison: renderMaison, monograph: renderMonograph, ledger: renderLedger, salon: renderSalon, folio: renderFolio, sequence: renderSequence, cabinet: renderCabinet, editions: renderEditions, rooms: renderRooms, notes: renderNotes, navigator: renderNavigator };
   if (!renderers[concept]) throw new Error(`Unknown concept: ${concept}`);
 
   root.innerHTML = renderers[concept]();
@@ -256,6 +335,17 @@
   });
   dialog.querySelector('button').addEventListener('click', () => dialog.close());
   dialog.addEventListener('click', (event) => { if (event.target === dialog) dialog.close(); });
+
+  document.querySelectorAll('[data-expand-section]').forEach((button) => {
+    button.addEventListener('click', () => {
+      const content = document.getElementById(button.dataset.expandSection);
+      if (!content) return;
+      const expanded = button.getAttribute('aria-expanded') === 'true';
+      button.setAttribute('aria-expanded', String(!expanded));
+      content.hidden = expanded;
+      button.textContent = expanded ? `View all ${button.dataset.count} photographs` : 'Show selected edit';
+    });
+  });
 
   document.querySelectorAll('[data-folio-section]').forEach((section) => {
     const stage = section.querySelector('.folio-stage');
